@@ -25,7 +25,4 @@ class Nav extends Component {
     );
   }
 }
-{
-  /* <Link to={"/saved"}>Saved</Link> */
-}
 export default Nav;

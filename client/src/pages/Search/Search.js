@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Search.css";
-import API from "../../utils/API";
 import Book from "../../components/Book/Book";
 const axios = require("axios");
 
@@ -9,17 +8,6 @@ class Search extends Component {
     books: [],
     book: "",
   };
-
-  componentDidMount() {
-    // var bookData = axios
-    //   .get(
-    //     "https://www.googleapis.com/books/v1/volumes?q=james+and+giant_peach"
-    //   )
-    //   .then((res) => console.log(res));
-    // console.log(bookData);
-    // this.setState({})
-    // API.getBooks();
-  }
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -33,14 +21,21 @@ class Search extends Component {
     const queryUrl =
       "https://www.googleapis.com/books/v1/volumes?q=" + searchValue;
     axios.get(queryUrl).then((res) => this.setState({ books: res.data.items }));
-    console.log(this.state.books);
+  };
+
+  bookAddedToFavorites = (id) => {
+    let array = [...this.state.books];
+    array.splice(id, 1);
+    this.setState({ books: array });
   };
 
   render() {
     return (
       <div className="container">
         <div className="center">
-          <div><strong>Book to search:</strong> {this.state.book}</div>
+          <div>
+            <strong>Book to search:</strong> {this.state.book}
+          </div>
           <input
             value={this.state.book}
             onChange={this.handleInputChange}
@@ -49,8 +44,20 @@ class Search extends Component {
           ></input>
           <button onClick={this.handleFormSubmit}>Submit</button>
         </div>
-        <br></br><br></br><br></br>
-        {this.state.books.map((book) => <Book bookData={book.volumeInfo} />)}
+        <br></br>
+        <br></br>
+        <br></br>
+        {this.state.books.map((book, index) => {
+          const bookInfo = {
+            authors: book.volumeInfo.authors.join(", ").replace(/,$/, ""),
+            title: book.volumeInfo.title,
+            description: book.volumeInfo.description,
+            image: book.volumeInfo.imageLinks.thumbnail,
+            link: book.volumeInfo.infoLink
+          }
+
+          return <Book key={index} id={index} bookData={bookInfo} action={this.bookAddedToFavorites} type="add" />;
+        })}
       </div>
     );
   }
