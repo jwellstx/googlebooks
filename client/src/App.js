@@ -15,7 +15,7 @@ class App extends Component {
           <JumboTron />
           <Switch>
             <Route exact path="/saved" component={Saved} />
-            <Route path="/" component={Search} />
+            <Route component={Search} />
           </Switch>
         </div>
       </Router>
