@@ -4,6 +4,7 @@ import Nav from "./components/Nav/Nav";
 import Search from "./pages/Search/Search";
 import Saved from "./pages/Saved/Saved";
 import JumboTron from "./components/JumboTron/JumboTron";
+import Footer from "./components/Footer/Footer";
 import "./App.css";
 
 class App extends Component {
@@ -17,6 +18,8 @@ class App extends Component {
             <Route exact path="/saved" component={Saved} />
             <Route component={Search} />
           </Switch>
+          <br></br>
+          <Footer />
         </div>
       </Router>
     );
