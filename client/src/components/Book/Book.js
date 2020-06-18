@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import API from "../../utils/API";
+import "./Book.css";
 
 class Book extends Component {
   handleThisBook = () => {
+    // if this is a book on the saved page, delete the book.  if its on teh search page, save the book
     this.props.type === "save" ? API.saveBook(this.props.bookData) : API.deleteBook(this.props.bookData._id);
     const id = this.props.id;
-    this.props.action(id); // this action is to save the book in Search parent
+    this.props.action(id); // this action is to remove the book in Search parent component list
   };
 
   render() {
@@ -38,6 +41,7 @@ class Book extends Component {
             onClick={this.handleThisBook}>
             {this.props.type === "save" ? "Save Book!" : "Remove!"}
           </button>
+          {this.props.type === "save" ? <button className="btn btn-primary mx-4"><Link className="gosave" to={"/saved"}>Goto Saved!</Link></button> : <div></div>}
         </p>
         <hr></hr>
       </div>

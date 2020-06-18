@@ -9,11 +9,13 @@ class Saved extends Component {
   };
 
   componentDidMount() {
+    // when component mounts, query saved books then update state to display
     API.getBooks().then((res) => {
       this.setState({ books: res.data });
     });
   }
 
+  // remove specific book component based on when someone clicks "remove" from saved page
   removeBookFromFavorites = (id) => {
     let array = [...this.state.books];
     array.splice(id, 1);
