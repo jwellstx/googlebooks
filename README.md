@@ -2,7 +2,7 @@
 
 ## Description
 
-### A simple application that utilizes `Node`, `Express` and `React` as well as the GoogleBooks API to create a react app that allows you to query for your favorite books.  In addition you are able to push your more desired book to a saved list and view your saved book at a later point.  When you are you finished, you can then remove them for the saved list!
+### A simple application that utilizes `Node`, `Express` and `React` as well as the `GoogleBooks API` to create a react app that allows you to query for your favorite books.  In addition you are able to push your more desired book to a saved list and view your saved book at a later point.  When you are you finished, you can then remove them for the saved list!
 
 ## Starting the app locally
 
