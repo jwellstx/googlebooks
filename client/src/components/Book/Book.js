@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 
 class Book extends Component {
-  saveThisBook = () => {
+  handleThisBook = () => {
+    this.props.type === "save" ? API.saveBook(this.props.bookData) : API.deleteBook(this.props.bookData._id);
     const id = this.props.id;
-    API.saveBook(this.props.bookData);
     this.props.action(id); // this action is to save the book in Search parent
   };
 
@@ -34,9 +34,9 @@ class Book extends Component {
           <br></br>
           <br></br>
           <button
-            className={`btn btn-${this.props.type === "add" ? "primary" : "danger"}`}
-            onClick={this.saveThisBook}>
-            {this.props.type === "add" ? "Add Favorite!" : "Remove!"}
+            className={`btn btn-${this.props.type === "save" ? "primary" : "danger"}`}
+            onClick={this.handleThisBook}>
+            {this.props.type === "save" ? "Save Book!" : "Remove!"}
           </button>
         </p>
         <hr></hr>

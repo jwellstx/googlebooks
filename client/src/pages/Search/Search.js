@@ -15,7 +15,7 @@ class Search extends Component {
       [name]: value,
     });
   };
-
+  
   handleFormSubmit = (event) => {
     const searchValue = this.state.book.replace(/\s/, "+");
     const queryUrl =
@@ -56,7 +56,7 @@ class Search extends Component {
             link: book.volumeInfo.infoLink
           }
 
-          return <Book key={index} id={index} bookData={bookInfo} action={this.bookAddedToFavorites} type="add" />;
+          return <Book key={index} id={index} bookData={bookInfo} action={this.bookAddedToFavorites} type="save" />;
         })}
       </div>
     );

@@ -15,8 +15,6 @@ class Saved extends Component {
   }
 
   removeBookFromFavorites = (id) => {
-    // API.removeBook(id);
-
     let array = [...this.state.books];
     array.splice(id, 1);
     this.setState({ books: array });
